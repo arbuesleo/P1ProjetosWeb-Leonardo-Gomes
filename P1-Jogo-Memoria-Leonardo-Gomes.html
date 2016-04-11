@@ -1,0 +1,85 @@
+<!doctype html>  
+<html lang="pt-br" ng-app = "JogoMemoria">  
+	<head>  
+		<meta charset="utf-8">  
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+		<title>Jogo Memoria - Leonardo Gomes</title>  
+		<link href="css/bootstrap.min.css" rel="stylesheet">  
+		<link href="css/bootstrap.css" rel="stylesheet">
+		<link href="css/P1-Jogo-Memoria-Leonardo-Gomes.css" rel="stylesheet">
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/angular.min.js"></script>
+		<script src="js/P1-Jogo-Memoria-Leonardo-Gomes.js"></script>  
+	
+	</head>
+	<body>
+			
+		<div class="container" ng-controller = "p1JogoMemoria">
+			<br/>
+			<div class="col-xs-12">
+				Nível: {{level}}
+				Tempo Restante: {{tempRestante}}
+				Acertos: {{acertos}}
+			</div>
+			<div class="col-xs-3 casa" align="center" ng-repeat = "n in tab track by $index" ng-click = "joga($index)">
+				<div ng-show = "tab[$index].show">
+					
+				<img src="{{tab[$index].valor}}" class="imagem img-responsive">
+				</div>	
+			</div>
+
+			<div class="modal fade" data-backdrop="static" id="modalNextLevel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h4 class="modal-title" id="myModalLabel">Atenção!</h4>
+			      </div>
+			      <div class="modal-body">
+			        Prabéns você ganhou! Deseja ir para o próximo nível?
+			      </div>
+			      <div class="modal-footer">
+			      	<button type="button" ng-click = "sair()" class="btn btn-danger" data-dismiss="modal">Sair do Jogo</button>
+			       <button type="button" ng-click = "nextLevel()" class="btn btn-success" data-dismiss="modal">Próximo Nível >></button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+
+			<div class="modal fade" data-backdrop="static" id="modalTempoEsgotado" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h4 class="modal-title" id="myModalLabel">Atenção!</h4>
+			      </div>
+			      <div class="modal-body">
+			        Tempo Esgotado! Deseja tentar novamente?
+			      </div>
+			      <div class="modal-footer">
+			      	<button type="button" ng-click = "sair()" class="btn btn-danger" data-dismiss="modal">Sair do Jogo</button>
+			       <button type="button" ng-click = "tentarNovamente()" class="btn btn-success" data-dismiss="modal">Tentar Novamente >></button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+
+			<div class="modal fade" data-backdrop="static" id="modalFimLevel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h4 class="modal-title" id="myModalLabel">Atenção!</h4>
+			      </div>
+			      <div class="modal-body">
+			        Parabéns, você concluiu todos os níveis!
+			      </div>
+			      <div class="modal-footer">
+			      	<button type="button" ng-click = "sair()" class="btn btn-danger" data-dismiss="modal">Sair do Jogo</button>
+			       <button type="button" ng-click = "reiniciar()" class="btn btn-success" data-dismiss="modal">Reiniciar Jogo >></button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+
+		</div>
+	</body>
+</html>

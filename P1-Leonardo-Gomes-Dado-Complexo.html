@@ -1,0 +1,42 @@
+<!doctype html>  
+<html lang="pt-br" ng-app = "dadoComplexo">  
+	<head>  
+		<meta charset="utf-8">  
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+		<title>Jogo Memoria - Leonardo Gomes</title>  
+		<link href="css/bootstrap.min.css" rel="stylesheet">  
+		<link href="css/bootstrap.css" rel="stylesheet">
+		<link href="css/P1-Leonardo-Gomes-Dado-Complexo.css" rel="stylesheet">
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/angular.min.js"></script>
+		<script src="js/P1-Leonardo-Gomes-Dado-Complexo.js"></script>  	
+	</head>
+
+	<body>			
+		<div class="container" ng-controller = "p1DadoComplexo">
+			<div class="row">
+				<div class="col-xs-3 casa" ng-repeat="n in dados track by $index">
+					<img src="{{dados[$index]}}" class="img-responsive imagem">
+				</div>
+			</div>
+			<br/>
+			<div class="row">
+				<div class="col-xs-2">
+					<div>
+						Quantidade de Dados:
+					</div>
+
+					<input type="number" class="form-control" ng-model = "tamVet">
+					<button type="button" class="btn btn-danger" ng-click="startJogo()">Sortear</button>
+
+					<div>
+						Soma:
+						{{soma}}
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
